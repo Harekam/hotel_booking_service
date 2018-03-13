@@ -3,9 +3,7 @@
  */
 'use strict';
 module.exports = {
-    bot: require('./botModel'),
-    user: require('./userModel'),
-    survey: require('./surveyModel'),
-    group: require('./groupModel'),
-    surveySubmission: require('./surveySubmissionModel')
+    booking: require('./bookingModel'),
+    inventory: require('./inventoryModel'),
+    roomType: require('./roomTypeModel')
 };

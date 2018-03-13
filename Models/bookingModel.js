@@ -4,9 +4,9 @@
 'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { constants, dbConfig } = require('../Config');
+const { constants, dbConfig } = require('../Configs');
 const { MODEL_NAMES } = dbConfig;
-const { BOOKING_STATUS } = constants;
+const { BOOKING_STATUS, TIMEZONE_INDIA } = constants;
 
 const booking = new Schema({
     roomType: {
@@ -18,9 +18,12 @@ const booking = new Schema({
     customerEmail: { type: String, required: true },
     fromDate: { type: Date, required: true },
     toDate: { type: Date, required: true },
+    fromDateUTC: { type: Date, required: true },
+    toDateUTC: { type: Date, required: true },
     isCancelled: { type: Boolean, default: false },
     cancelledAt: { type: Date },
     amount: { type: Number, required: true },
+    timezone: { type: String, default: TIMEZONE_INDIA },
     bookingStatus: {
         type: String,
         enum: [

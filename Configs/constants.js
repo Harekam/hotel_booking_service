@@ -63,7 +63,13 @@ const BOOKING_STATUS = {
     CANCELLED: 'CANCELLED',
     BOOKED: 'BOOKED'
 };
+const DEFAULT_ROOM_TIME_CONSTRAINTS = {
+    unit: TIME_UNITS.DAYS,
+    frequency: 30
+};
+
 module.exports = {
+    DEFAULT_ROOM_TIME_CONSTRAINTS,
     REGEX,
     DATE_FORMAT,
     TIMESTAMP_FORMAT,
