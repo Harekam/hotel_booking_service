@@ -371,7 +371,20 @@ function mergeDateAndTime(date, time) {
     dateTime.setMinutes(time);
     return dateTime;
 }
+function convertToDays(frequency, unit) {
+    switch (unit) {
+        case TIME_UNITS.WEEKS:
+            return frequency * 7;
+        case TIME_UNITS.MONTHS:
+            return frequency * 30;
+        case TIME_UNITS.YEARS:
+            return frequency * 365;
+        default:
+            return frequency;
+    }
+}
 module.exports = {
+    convertToDays,
     mergeDateAndTime,
     failActionFunction,
     isSameDate,
