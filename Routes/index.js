@@ -1,3 +1,4 @@
 module.exports = [
-    require('./roomTypeRoutes')
+    require('./roomTypeRoutes'),
+    require('./inventoryRoutes')
 ];

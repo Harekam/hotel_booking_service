@@ -8,7 +8,7 @@ const moment = require('moment');
 require('moment-timezone');
 require('moment-range');
 const { SUCCESS_MESSAGES, ERROR_MESSAGES } = responseMessages;
-const { STATUS_CODE, TIME_UNITS, TIMEZONE_INDIA, JAVASCRIPT_TIMESTAMP_FORMAT } = constants;
+const { STATUS_CODE, TIME_UNITS, TIMEZONE_INDIA, JAVASCRIPT_TIMESTAMP_FORMAT, DAYS } = constants;
 
 function failActionFunction(request, reply, source, error) {
 
@@ -280,13 +280,13 @@ function getDay(date) {
     if (!date)
         date = new Date();
     let weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0] = DAYS.SUNDAY;
+    weekday[1] = DAYS.MONDAY;
+    weekday[2] = DAYS.TUESDAY;
+    weekday[3] = DAYS.WEDNESDAY;
+    weekday[4] = DAYS.THURSDAY;
+    weekday[5] = DAYS.FRIDAY;
+    weekday[6] = DAYS.SATURDAY;
 
     return weekday[date.getDay()];
 }
@@ -371,7 +371,7 @@ function mergeDateAndTime(date, time) {
     dateTime.setMinutes(time);
     return dateTime;
 }
-function convertToDays({frequency, unit}) {
+function convertToDays({ frequency, unit }) {
     switch (unit) {
         case TIME_UNITS.WEEKS:
             return frequency * 7;

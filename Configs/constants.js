@@ -73,6 +73,15 @@ const CONTENT_BOUNDS = {
         max: 100
     }
 };
+const DAYS = {
+    MONDAY: 'Monday',
+    TUESDAY: 'Tuesday',
+    WEDNESDAY: 'Wednesday',
+    THURSDAY: 'Thursday',
+    FRIDAY: 'Friday',
+    SATURDAY: 'Saturday',
+    SUNDAY: 'Sunday'
+}
 module.exports = {
     CONTENT_BOUNDS,
     DEFAULT_ROOM_TIME_CONSTRAINTS,
@@ -87,5 +96,6 @@ module.exports = {
     JAVASCRIPT_TIMESTAMP_FORMAT,
     DEVICE_TYPE,
     TIME_UNITS,
-    BOOKING_STATUS
+    BOOKING_STATUS,
+    DAYS
 };
