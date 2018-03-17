@@ -15,16 +15,20 @@ const inventory = new Schema({
         required: true
     },
     date: { type: Date, required: true },
-    day: { type: String, required: true, enum: [
-        DAYS.MONDAY,
-        DAYS.TUESDAY,
-        DAYS.WEDNESDAY,
-        DAYS.THURSDAY,
-        DAYS.FRIDAY,
-        DAYS.SATURDAY,
-        DAYS.SUNDAY
-    ] },
+    day: {
+        type: String, required: true, enum: [
+            DAYS.MONDAY,
+            DAYS.TUESDAY,
+            DAYS.WEDNESDAY,
+            DAYS.THURSDAY,
+            DAYS.FRIDAY,
+            DAYS.SATURDAY,
+            DAYS.SUNDAY
+        ]
+    },
     availableRooms: { type: Number, required: true },
     price: { type: Number, required: true }
 }, { timestamps: true });
+inventory.index({ roomType: 1, date: 1 });
+inventory.index({ roomType: 1, day: 1 });
 module.exports = mongoose.model(MODEL_NAMES.INVENTORY, inventory);
