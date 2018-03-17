@@ -10,7 +10,8 @@ const {
     convertToDays,
     getCustomDate,
     createErrorResponse,
-    createSuccessResponse
+    createSuccessResponse,
+    getDay
 } = require('../Utilities/util');
 
 function addRoomType(payload, callbackRoute) {
@@ -29,6 +30,7 @@ function addRoomType(payload, callbackRoute) {
                 inventories.push({
                     roomType: _id,
                     date,
+                    day: getDay(date),
                     availableRooms: totalRooms,
                     price: roomPrice
                 });

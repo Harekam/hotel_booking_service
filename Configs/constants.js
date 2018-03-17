@@ -67,8 +67,14 @@ const DEFAULT_ROOM_TIME_CONSTRAINTS = {
     unit: TIME_UNITS.DAYS,
     frequency: 30
 };
-
+const CONTENT_BOUNDS = {
+    name: {
+        min: 5,
+        max: 100
+    }
+};
 module.exports = {
+    CONTENT_BOUNDS,
     DEFAULT_ROOM_TIME_CONSTRAINTS,
     REGEX,
     DATE_FORMAT,

@@ -14,6 +14,7 @@ const inventory = new Schema({
         required: true
     },
     date: { type: Date, required: true },
+    day: { type: String, required: true },
     availableRooms: { type: Number, required: true },
     price: { type: Number, required: true }
 }, { timestamps: true });
