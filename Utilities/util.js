@@ -371,7 +371,7 @@ function mergeDateAndTime(date, time) {
     dateTime.setMinutes(time);
     return dateTime;
 }
-function convertToDays(frequency, unit) {
+function convertToDays({frequency, unit}) {
     switch (unit) {
         case TIME_UNITS.WEEKS:
             return frequency * 7;

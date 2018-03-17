@@ -20,7 +20,11 @@
     "lodash": "^4.16.2",
     "log4js": "^0.6.38",
     "moment": "^2.15.1",
+    "mongoose": "^5.0.10",
     "pure-util": "0.0.2",
     "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }

@@ -44,8 +44,7 @@ function _init() {
         method: 'GET',
         path: '/',
         handler: function (request, reply) {
-
-            return reply('Welcome to Hotel Booking Service!');
+            return reply.redirect('/documentation');
         }
     });
     //Connect to MongoDB

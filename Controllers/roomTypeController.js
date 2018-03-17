@@ -19,10 +19,10 @@ function addRoomType(payload, callbackRoute) {
         createRoomType: (callback) => {
             Services.roomType.addRoomType(payload, callback);
         },
-        createInventory: ['createRoom', (results, callback) => {
+        createInventory: ['createRoomType', (results, callback) => {
             const { _id, advanceBookingTimeConstraint, totalRooms, roomPrice } = results.createRoomType;
             const inventories = [];
-            const totalDays = convertToDays(...advanceBookingTimeConstraint);
+            const totalDays = convertToDays(advanceBookingTimeConstraint);
             const now = new Date();
             let date = now;
             let i = 1;
@@ -45,6 +45,21 @@ function addRoomType(payload, callbackRoute) {
     });
 }
 
+function getRoomTypes(queryParams, callbackRoute) {
+    async.auto({
+        totalRoomTypes: (callback) => {
+            Services.roomType.totalRoomTypes({}, callback);
+        },
+        roomTypes: (callback) => {
+            Services.roomType.getRoomTypes(queryParams, callback);
+        }
+    }, (error, result) => {
+        if (error) return callbackRoute(createErrorResponse(error));
+        return callbackRoute(createSuccessResponse(null, STATUS_CODE.OK, result));
+    });
+}
+
 module.exports = {
-    addRoomType
+    addRoomType,
+    getRoomTypes
 };

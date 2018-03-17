@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const mongodbURI = process.env.MONGO_URI || 'mongodb://localhost';
+const mongodbURI = process.env.MONGO_URI || 'mongodb://localhost/hotel_booking_service';
 
 const MODEL_NAMES = {
     ROOM_TYPE: 'roomType',
