@@ -64,8 +64,8 @@ const getRoomTypes = {
         },
         validate: {
             query: {
-                limit: Joi.number().optional().positive().default(DEFAULT_LIMIT),
-                skip: Joi.number().optional().min(0).default(0)
+                limit: Joi.number().optional().integer().positive().default(DEFAULT_LIMIT),
+                skip: Joi.number().optional().integer().min(0).default(0)
             },
             failAction: failActionFunction
         },

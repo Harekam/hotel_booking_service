@@ -28,7 +28,21 @@ function updateInventories(payload, callbackRoute) {
         return callbackRoute(createSuccessResponse());
     });
 }
+function getInventories(queryParams, callbackRoute) {
+    async.auto({
+        inventories: (callback) => {
+            Services.inventory.getInventoriesData(queryParams, callback);
+        },
+        totalCount: (callback) => {
+            Services.inventory.getInventoriesCount(queryParams, callback);
+        }
+    }, (error, result) => {
+        if (error) return callbackRoute(createErrorResponse(error));
+        return callbackRoute(createSuccessResponse(null, null, result));
+    });
+}
 
 module.exports = {
-    updateInventories
+    updateInventories,
+    getInventories
 };

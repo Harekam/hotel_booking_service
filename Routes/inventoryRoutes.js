@@ -55,6 +55,48 @@ const tweakInventory = {
         }
     }
 };
+const getInventories = {
+    method: 'GET',
+    path: '/api/v1/inventory',
+    config: {
+        description: 'get inventories',
+        tags,
+        handler: (request, reply) => {
+            inventoryController.getInventories(request.query, (error, success) => {
+                if (error)
+                    return reply(error.response).code(error.statusCode);
+                return reply(null, success.response).code(success.statusCode);
+            });
+        },
+        validate: {
+            query: {
+                limit: Joi.number().optional().integer().positive().default(DEFAULT_LIMIT),
+                skip: Joi.number().optional().integer().min(0).default(0),
+                roomTypeId: Joi.string().required().trim().regex(REGEX.OBJECT_ID),
+                fromDate: Joi.date().optional(),
+                toDate: Joi.date().optional(),
+                days: Joi.array().items(
+                    Joi.string().required().valid(
+                        DAYS.MONDAY,
+                        DAYS.TUESDAY,
+                        DAYS.WEDNESDAY,
+                        DAYS.THURSDAY,
+                        DAYS.FRIDAY,
+                        DAYS.SATURDAY,
+                        DAYS.SUNDAY
+                    )
+                ).unique().optional()
+            },
+            failAction: failActionFunction
+        },
+        plugins: {
+            'hapi-swagger': {
+                responses: new DefaultResponse()
+            }
+        }
+    }
+};
 module.exports = [
-    tweakInventory
+    tweakInventory,
+    getInventories
 ];
