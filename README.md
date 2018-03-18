@@ -4,7 +4,7 @@
 
 ## Running the server
 - Run command: "npm start" or "node server.js"
-- Access "localhost:3000" for documentation
+- Access "localhost:3000" or "http://localhost:3000/documentation" for documentation
 
 ## Future Scope / Todos
 - For Test cases Mocha / Chai can be used.
